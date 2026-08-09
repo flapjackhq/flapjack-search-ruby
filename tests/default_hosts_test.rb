@@ -23,6 +23,20 @@ class DefaultHostsTest < Minitest::Test
     end
   end
 
+  def test_optional_region_hosts_use_flapjack_domains
+    # The regional branch is a distinct selector from the nil-region branch;
+    # assert it explicitly so a regression on the regional side fails.
+    cases = [
+      [Flapjack::AbtestingClient, "de", ["analytics.de.flapjack.io"]],
+      [Flapjack::AbtestingV3Client, "us", ["analytics.us.flapjack.io"]],
+      [Flapjack::AnalyticsClient, "de", ["analytics.de.flapjack.io"]]
+    ]
+
+    cases.each do |client_class, region, expected_urls|
+      assert_equal expected_urls, host_urls(client_class.create(APP_ID, API_KEY, region))
+    end
+  end
+
   def test_required_region_hosts_use_flapjack_domains
     cases = [
       [Flapjack::IngestionClient, "eu", ["data.eu.flapjack.io"]],
