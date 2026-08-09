@@ -48,4 +48,16 @@ class DefaultHostsTest < Minitest::Test
       assert_equal expected_urls, host_urls(client_class.create(APP_ID, API_KEY, region))
     end
   end
+
+  def test_insights_hosts_use_flapjack_domains
+    cases = [
+      [nil, ["insights.flapjack.io"]],
+      ["de", ["insights.de.flapjack.io"]],
+      ["us", ["insights.us.flapjack.io"]]
+    ]
+
+    cases.each do |region, expected_urls|
+      assert_equal expected_urls, host_urls(Flapjack::InsightsClient.create(APP_ID, API_KEY, region))
+    end
+  end
 end
