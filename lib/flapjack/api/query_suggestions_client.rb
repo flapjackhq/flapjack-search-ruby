@@ -41,7 +41,7 @@ module Flapjack
 
       hosts <<
         Transport::StatefulHost.new(
-          "query-suggestions.{region}.algolia.com".sub("{region}", region),
+          "query-suggestions.{region}.flapjack.io".sub("{region}", region),
           accept: CallType::READ | CallType::WRITE
         )
 
