@@ -1,3 +1,5 @@
+> **Retired 2026-09.** Flapjack is Algolia-compatible: use the official Algolia client for your language (`algoliasearch` for JavaScript, InstantSearch.js/React/Vue, `algoliasearch-client-*` elsewhere) pointed at your Flapjack host. Source history: https://github.com/flapjackhq/flapjack/tree/sdks-retired-2026-09
+
 # Flapjack Search Ruby SDK
 
 A fully-featured Ruby API client for [Flapjack Search](https://github.com/flapjackhq/flapjack). Drop-in replacement for the `algolia` gem.
